@@ -43,8 +43,12 @@ class TodoTile extends ConsumerWidget {
                 child: Text("Close"),
               ),
               TextButton(
-                onPressed: () =>
-                    notifier.updateTodo(todo.id, controller.text.trim()),
+                onPressed: () {
+                  if (controller.text.trim().isNotEmpty) {
+                    notifier.updateTodo(todo.id, controller.text.trim());
+                    Navigator.pop(context);
+                  }
+                },
                 child: Text("Save"),
               ),
             ],
